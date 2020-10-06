@@ -1,5 +1,40 @@
-# Ignore Gradle project-specific cache directory
-.gradle
+##############
+### gradle ###
+##############
 
-# Ignore Gradle build output directory
-build
+/.gradle/
+/*/.gradle/
+
+###############
+### eclipse ###
+###############
+
+/bin/
+/*/bin/
+
+/build/
+/*/build/
+
+/target/
+/*/target/
+
+###############
+### idea ######
+###############
+/*/out/
+
+###########################
+### first do not ignore ###
+###########################
+
+/.settings/
+/*/.settings/
+
+#.classpath
+#/*/.classpath
+
+#.project
+#/*/.project
+
+#.metadata
+#/*/.metadata
