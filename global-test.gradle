@@ -1,0 +1,20 @@
+
+sourceSets {
+	test {
+		java {
+			srcDir 'src/test/java'
+		}
+		resources {
+			srcDir 'src/test/resources'
+		}
+	}
+}
+
+apply from: '../global.gradle'
+
+dependencies {
+	testImplementation "junit:junit:4.13"
+	testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
+}
+
+

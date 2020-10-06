@@ -1,0 +1,8 @@
+
+apply from: '../global.gradle'
+
+dependencies {
+	implementation project(':misty-util')
+}
+
+

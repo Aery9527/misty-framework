@@ -1,0 +1,9 @@
+
+apply from: '../global.gradle'
+apply from: '../global-test.gradle'
+
+dependencies {
+	implementation group: 'ch.qos.logback', name: 'logback-classic', version: '1.2.3'
+}
+
+

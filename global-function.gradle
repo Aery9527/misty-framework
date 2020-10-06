@@ -1,0 +1,9 @@
+
+apply from: '../global.gradle'
+apply from: '../global-test.gradle'
+
+dependencies {
+	implementation project(':misty-util')
+}
+
+

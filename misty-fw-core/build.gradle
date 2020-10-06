@@ -1,0 +1,8 @@
+
+apply from: '../global-function.gradle'
+
+dependencies {
+	implementation project(':misty-fw-api')
+}
+
+

@@ -1,0 +1,8 @@
+
+apply from: '../global-usecase.gradle'
+
+dependencies {
+	implementation project(':misty-fw-core')
+}
+
+

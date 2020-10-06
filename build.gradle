@@ -1,0 +1,40 @@
+
+subprojects {
+	apply plugin: 'java'
+	apply plugin: 'eclipse'
+	apply plugin: 'idea'
+	
+	sourceCompatibility = '1.8'
+	targetCompatibility = '1.8'
+	
+    repositories {
+		mavenCentral()
+		jcenter()
+    }
+    
+    sourceSets {
+		main {
+			java {
+				srcDir 'src/main/java'
+			}
+			resources {
+				srcDir 'src/main/resources'
+			}
+		}
+	}
+    
+	eclipse {
+		classpath { 
+			defaultOutputDir = file('bin') // cheange default .class output folder
+			file { // cheange project "JRE System Library" with "Workspace default JRE"
+				whenMerged {
+					def jre = entries.find { it.path.contains 'org.eclipse.jdt.launching.JRE_CONTAINER' }
+					jre.path = 'org.eclipse.jdt.launching.JRE_CONTAINER'
+				}
+			}
+		}
+	}
+   
+}
+
+
