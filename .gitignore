@@ -30,11 +30,11 @@
 /.settings/
 /*/.settings/
 
-#.classpath
-#/*/.classpath
+.classpath
+/*/.classpath
 
-#.project
-#/*/.project
+.project
+/*/.project
 
-#.metadata
-#/*/.metadata
+.metadata
+/*/.metadata

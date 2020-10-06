@@ -22,6 +22,14 @@ public interface MistyApiInfo {
 
 	public String getImplementVersion();
 
+	public default String getImplementDescription() {
+		return getImplementName() + "(" + getImplementVersion() + ")";
+	}
+
+	public default String mixMessage(String msg) {
+		return getImplementDescription() + ":" + msg;
+	}
+
 	/* [instance] getter/setter */
 
 }
