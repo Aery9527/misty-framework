@@ -105,8 +105,17 @@ public class OnceSetter<HoldType> {
 	}
 
 	public HoldType getAndRemove() {
+		return getAndRemove(true);
+	}
+
+	public HoldType getAndRemove(boolean lock) {
 		HoldType hold = this.hold;
 		this.hold = null;
+
+		if (lock) {
+			lock();
+		}
+
 		return hold;
 	}
 

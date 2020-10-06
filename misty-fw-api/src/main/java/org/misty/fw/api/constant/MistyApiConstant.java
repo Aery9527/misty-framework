@@ -1,4 +1,4 @@
-package org.misty.fw.api.info;
+package org.misty.fw.api.constant;
 
 public class MistyApiConstant {
 
@@ -15,7 +15,7 @@ public class MistyApiConstant {
 	public static class SystemPropertyKeys {
 		private static final String PREFIX = MistyApiConstant.PREFIX + ".sp";
 
-		public static final String ACCEPT_MULTIPLE_MISTY_API_INFO_IMPLEMENT = PREFIX + ".accept-multiple-mai"; // boolean
+		public static final String ACCEPT_SPI_MULTIPLE_MISTY_IMPLEMENT = PREFIX + ".accept-spi-multiple-misty"; // boolean
 	}
 
 	/* [static] method */

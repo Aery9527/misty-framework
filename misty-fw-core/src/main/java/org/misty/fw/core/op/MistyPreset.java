@@ -1,9 +1,11 @@
-package org.misty.fw.core.info;
+package org.misty.fw.core.op;
 
-import org.misty.fw.api.info.MistyApiInfo;
+import org.misty.fw.api.op.Misty;
+import org.misty.fw.api.op.MistyCamp;
+import org.misty.fw.api.op.MistyLauncher;
 import org.misty.fw.core.MistyFrameworkCoreDescription;
 
-public class MistyApiInfoImplement implements MistyApiInfo {
+public class MistyPreset implements Misty {
 
 	/* [static] field */
 
@@ -25,6 +27,18 @@ public class MistyApiInfoImplement implements MistyApiInfo {
 	@Override
 	public String getImplementVersion() {
 		return MistyFrameworkCoreDescription.INSTANCE.getVersion();
+	}
+
+	@Override
+	public MistyLauncher getLauncher() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public MistyCamp getCamp() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	/* [instance] getter/setter */
