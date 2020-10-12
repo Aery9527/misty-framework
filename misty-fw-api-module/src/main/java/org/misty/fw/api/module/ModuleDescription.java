@@ -1,9 +1,8 @@
-package org.misty.fw.api.op;
+package org.misty.fw.api.module;
 
-/**
- * 
- */
-public interface MistyLauncher {
+import org.misty.util.generic.GenericDescription;
+
+public interface ModuleDescription extends GenericDescription {
 
 	/* [static] field */
 

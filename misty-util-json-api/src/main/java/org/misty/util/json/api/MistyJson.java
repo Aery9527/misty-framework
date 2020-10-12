@@ -1,9 +1,6 @@
-package org.misty.fw.api.op;
+package org.misty.util.json.api;
 
-/**
- * 
- */
-public interface MistyCamp {
+public interface MistyJson {
 
 	/* [static] field */
 
@@ -16,6 +13,12 @@ public interface MistyCamp {
 	/* [instance] constructor */
 
 	/* [instance] method */
+
+	public boolean isMistyObject();
+
+	public boolean isMistyArray();
+
+	public boolean isValue();
 
 	/* [instance] getter/setter */
 

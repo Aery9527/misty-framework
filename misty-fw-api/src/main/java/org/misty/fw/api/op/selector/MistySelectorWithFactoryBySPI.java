@@ -1,9 +1,9 @@
-package org.misty.fw.api.selector;
+package org.misty.fw.api.op.selector;
 
 import java.util.Iterator;
 import java.util.ServiceLoader;
 
-import org.misty.fw.api.constant.MistyApiConstant;
+import org.misty.fw.api.generic.MistyApiConstant;
 import org.misty.fw.api.op.Misty;
 import org.misty.fw.api.op.MistyFactory;
 import org.misty.util.generic.SystemValues;

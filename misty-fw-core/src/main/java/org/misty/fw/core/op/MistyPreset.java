@@ -1,8 +1,8 @@
 package org.misty.fw.core.op;
 
+import org.misty.fw.api.module.MistyModuleCamp;
+import org.misty.fw.api.module.MistyModuleLauncher;
 import org.misty.fw.api.op.Misty;
-import org.misty.fw.api.op.MistyCamp;
-import org.misty.fw.api.op.MistyLauncher;
 import org.misty.fw.core.MistyFrameworkCoreDescription;
 
 public class MistyPreset implements Misty {
@@ -14,6 +14,10 @@ public class MistyPreset implements Misty {
 	/* [static] method */
 
 	/* [instance] field */
+
+	private MistyModuleLauncher launcher;
+
+	private MistyModuleCamp mistyCamp;
 
 	/* [instance] constructor */
 
@@ -30,15 +34,13 @@ public class MistyPreset implements Misty {
 	}
 
 	@Override
-	public MistyLauncher getLauncher() {
-		// TODO Auto-generated method stub
-		return null;
+	public MistyModuleLauncher getLauncher() {
+		return this.launcher;
 	}
 
 	@Override
-	public MistyCamp getCamp() {
-		// TODO Auto-generated method stub
-		return null;
+	public MistyModuleCamp getCamp() {
+		return this.mistyCamp;
 	}
 
 	/* [instance] getter/setter */

@@ -1,4 +1,4 @@
-package org.misty.fw.api.selector;
+package org.misty.fw.api.op.selector;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.Supplier;

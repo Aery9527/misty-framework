@@ -1,6 +1,8 @@
 package org.misty.fw.api.op;
 
-import org.misty.fw.api.selector.MistySelector;
+import org.misty.fw.api.module.MistyModuleCamp;
+import org.misty.fw.api.module.MistyModuleLauncher;
+import org.misty.fw.api.op.selector.MistySelector;
 
 import jdk.nashorn.internal.ir.annotations.Immutable;
 
@@ -58,10 +60,10 @@ public interface Misty {
 	//
 
 	@Immutable
-	public MistyLauncher getLauncher();
+	public MistyModuleLauncher getLauncher();
 
 	@Immutable
-	public MistyCamp getCamp();
+	public MistyModuleCamp getCamp();
 
 	/* [instance] getter/setter */
 

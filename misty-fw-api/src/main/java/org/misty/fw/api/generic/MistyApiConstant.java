@@ -1,4 +1,4 @@
-package org.misty.fw.api.constant;
+package org.misty.fw.api.generic;
 
 public class MistyApiConstant {
 
