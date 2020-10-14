@@ -26,7 +26,9 @@ public interface MistyJson {
 
 	public MistyJsonArray toJsonArray() throws MistyJsonException;
 
-	public MistyJsonValue toJsonValue() throws MistyJsonException;
+	public MistyJsonValue<?> toJsonValue() throws MistyJsonException;
+
+	//
 
 	public String toString();
 

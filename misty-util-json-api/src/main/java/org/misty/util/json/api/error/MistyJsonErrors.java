@@ -2,8 +2,10 @@ package org.misty.util.json.api.error;
 
 import org.misty.util.generic.GenericErrorDefinition;
 
-public enum MistyJsonErrorCodes implements GenericErrorDefinition<MistyJsonException> {
+public enum MistyJsonErrors implements GenericErrorDefinition<MistyJsonException> {
+	// 00 series is about check error
 	NODE_CAST_ERROR("0001") //
+	, SET_ERROR("0002") //
 	;
 
 	/* [static] field */
@@ -14,18 +16,22 @@ public enum MistyJsonErrorCodes implements GenericErrorDefinition<MistyJsonExcep
 
 	/* [instance] field */
 
+	private final String errorType;
+
 	private final String errorCode;
 
 	private final String errorMsg;
 
 	/* [instance] constructor */
 
-	MistyJsonErrorCodes(String errorCode) {
+	MistyJsonErrors(String errorCode) {
+		this.errorType = GenericErrorDefinition.super.getErrorType();
 		this.errorCode = errorCode;
 		this.errorMsg = name();
 	}
 
-	MistyJsonErrorCodes(String errorCode, String errorMsg) {
+	MistyJsonErrors(String errorCode, String errorMsg) {
+		this.errorType = GenericErrorDefinition.super.getErrorType();
 		this.errorCode = errorCode;
 		this.errorMsg = errorMsg;
 	}
@@ -53,6 +59,11 @@ public enum MistyJsonErrorCodes implements GenericErrorDefinition<MistyJsonExcep
 	}
 
 	/* [instance] getter/setter */
+
+	@Override
+	public String getErrorType() {
+		return this.errorType;
+	}
 
 	@Override
 	public String getErrorCode() {

@@ -1,9 +1,9 @@
 package org.misty.util.json.api.node;
 
-import org.misty.util.json.api.error.MistyJsonErrorCodes;
+import org.misty.util.json.api.error.MistyJsonErrors;
 import org.misty.util.json.api.error.MistyJsonException;
 
-public interface MistyJsonValue extends MistyJson {
+public interface MistyJsonValue<ValueType> extends MistyJson {
 
 	/* [static] field */
 
@@ -34,22 +34,34 @@ public interface MistyJsonValue extends MistyJson {
 
 	@Override
 	public default MistyJsonObject toJsonObject() throws MistyJsonException {
-		throw MistyJsonErrorCodes.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
 	@Override
 	public default MistyJsonArray toJsonArray() throws MistyJsonException {
-		throw MistyJsonErrorCodes.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
 	@Override
-	public default MistyJsonValue toJsonValue() throws MistyJsonException {
+	public default MistyJsonValue<?> toJsonValue() throws MistyJsonException {
 		return this;
 	}
-	
-	//
-	
-	public int toInt();
+
+	public boolean isNullValue();
+
+	public boolean isStringValue();
+
+	public boolean isNumberValue();
+
+	public MistyJsonValueAsNull toNullValue();
+
+	public MistyJsonValueAsString toStringValue();
+
+	public MistyJsonValueAsNumber toNumberValue();
+
+	public ValueType getValue();
+
+	public void setValue(ValueType value);
 
 	/* [instance] getter/setter */
 

@@ -1,6 +1,6 @@
 package org.misty.util.generic;
 
-import org.misty.util.exception.MistyException;
+import org.misty.util.error.MistyException;
 
 public interface GenericErrorDefinition<ThrowableType extends MistyException> {
 

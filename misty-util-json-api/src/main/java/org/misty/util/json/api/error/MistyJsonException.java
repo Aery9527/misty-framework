@@ -1,6 +1,6 @@
 package org.misty.util.json.api.error;
 
-import org.misty.util.exception.MistyException;
+import org.misty.util.error.MistyException;
 import org.misty.util.generic.GenericErrorDefinition;
 
 @SuppressWarnings("serial")

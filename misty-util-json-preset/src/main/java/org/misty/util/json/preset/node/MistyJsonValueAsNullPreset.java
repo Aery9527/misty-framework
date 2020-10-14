@@ -1,8 +1,8 @@
 package org.misty.util.json.preset.node;
 
-import org.misty.util.json.api.node.MistyJsonValue;
+import org.misty.util.json.api.node.MistyJsonValueAsNull;
 
-public class MistyJsonValuePreset extends MistyJsonAbstract implements MistyJsonValue {
+public class MistyJsonValueAsNullPreset extends MistyJsonValueAbstract<Void> implements MistyJsonValueAsNull {
 
 	/* [static] field */
 
@@ -15,6 +15,11 @@ public class MistyJsonValuePreset extends MistyJsonAbstract implements MistyJson
 	/* [instance] constructor */
 
 	/* [instance] method */
+
+	@Override
+	public Void getValue() {
+		return null;
+	}
 
 	/* [instance] getter/setter */
 

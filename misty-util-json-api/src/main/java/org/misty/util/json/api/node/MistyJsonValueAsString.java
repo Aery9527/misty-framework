@@ -1,11 +1,8 @@
 package org.misty.util.json.api.node;
 
-import java.util.Collection;
-
 import org.misty.util.json.api.error.MistyJsonErrors;
-import org.misty.util.json.api.error.MistyJsonException;
 
-public interface MistyJsonArray extends MistyJson, Collection<MistyJson> {
+public interface MistyJsonValueAsString extends MistyJsonValue<String> {
 
 	/* [static] field */
 
@@ -20,35 +17,35 @@ public interface MistyJsonArray extends MistyJson, Collection<MistyJson> {
 	/* [instance] method */
 
 	@Override
-	public default boolean isJsonObject() {
+	public default boolean isNullValue() {
 		return false;
 	}
 
 	@Override
-	public default boolean isJsonArray() {
+	public default boolean isStringValue() {
 		return true;
 	}
 
 	@Override
-	public default boolean isJsonValue() {
+	public default boolean isNumberValue() {
 		return false;
 	}
 
 	@Override
-	public default MistyJsonObject toJsonObject() throws MistyJsonException {
+	public default MistyJsonValueAsNull toNullValue() {
 		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
 	@Override
-	public default MistyJsonArray toJsonArray() throws MistyJsonException {
+	public default MistyJsonValueAsString toStringValue() {
 		return this;
 	}
 
 	@Override
-	public default MistyJsonValue<?> toJsonValue() throws MistyJsonException {
+	public default MistyJsonValueAsNumber toNumberValue() {
 		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
-	
+
 	/* [instance] getter/setter */
 
 }

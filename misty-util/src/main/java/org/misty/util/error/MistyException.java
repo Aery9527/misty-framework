@@ -1,4 +1,4 @@
-package org.misty.util.exception;
+package org.misty.util.error;
 
 import org.misty.util.generic.GenericErrorDefinition;
 

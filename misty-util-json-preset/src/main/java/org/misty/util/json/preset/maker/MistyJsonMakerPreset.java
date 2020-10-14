@@ -6,7 +6,7 @@ import org.misty.util.json.api.node.MistyJsonObject;
 import org.misty.util.json.api.node.MistyJsonValue;
 import org.misty.util.json.preset.node.MistyJsonArrayPreset;
 import org.misty.util.json.preset.node.MistyJsonObjectPreset;
-import org.misty.util.json.preset.node.MistyJsonValuePreset;
+import org.misty.util.json.preset.node.MistyJsonValueAbstract;
 
 public class MistyJsonMakerPreset implements MistyJsonMaker {
 
@@ -34,7 +34,7 @@ public class MistyJsonMakerPreset implements MistyJsonMaker {
 
 	@Override
 	public MistyJsonValue makeJsonValue() {
-		return new MistyJsonValuePreset();
+		return new MistyJsonValueAbstract();
 	}
 
 	/* [instance] getter/setter */
