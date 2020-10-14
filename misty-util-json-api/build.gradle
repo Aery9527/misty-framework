@@ -1,6 +1,2 @@
 
 apply from: '../global-api.gradle'
-
-dependencies {
-	implementation project(':misty-util')
-}

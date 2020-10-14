@@ -1,5 +1,7 @@
 package org.misty.util.exception;
 
+import org.misty.util.generic.GenericErrorDefinition;
+
 @SuppressWarnings("serial")
 public class MistyException extends RuntimeException {
 
@@ -11,49 +13,36 @@ public class MistyException extends RuntimeException {
 
 	/* [instance] field */
 
-	private final String errorCode;
-
-	private final String errorMsg;
-
-	private final String connectedMsg;
+	private final GenericErrorDefinition<?> errorDefinition;
 
 	/* [instance] constructor */
 
-	public MistyException(String errorCode, String errorMsg) {
-		super();
-		this.errorCode = errorCode;
-		this.errorMsg = errorMsg;
-		this.connectedMsg = connectMsg();
+	public MistyException(GenericErrorDefinition<?> errorDefinition) {
+		super(errorDefinition.getErrorTypeCodeMsg());
+		this.errorDefinition = errorDefinition;
 	}
 
-	public MistyException(String errorCode, String errorMsg, Throwable throwable) {
-		super(throwable);
-		this.errorCode = errorCode;
-		this.errorMsg = errorMsg;
-		this.connectedMsg = connectMsg();
+	public MistyException(GenericErrorDefinition<?> errorDefinition, String message) {
+		super(message);
+		this.errorDefinition = errorDefinition;
+	}
+
+	public MistyException(GenericErrorDefinition<?> errorDefinition, Throwable cause) {
+		super(errorDefinition.getErrorTypeCodeMsg(), cause);
+		this.errorDefinition = errorDefinition;
+	}
+
+	public MistyException(GenericErrorDefinition<?> errorDefinition, String message, Throwable cause) {
+		super(message, cause);
+		this.errorDefinition = errorDefinition;
 	}
 
 	/* [instance] method */
 
-	@Override
-	public String getMessage() {
-		return this.connectedMsg;
-	}
-
-	//
-
-	private String connectMsg() {
-		return getClass().getSimpleName() + "(" + this.errorCode + ")(" + this.errorMsg + ")";
-	}
-
 	/* [instance] getter/setter */
 
-	public String getErrorCode() {
-		return errorCode;
-	}
-
-	public String getErrorMsg() {
-		return errorMsg;
+	public GenericErrorDefinition<?> getErrorDefinition() {
+		return errorDefinition;
 	}
 
 }

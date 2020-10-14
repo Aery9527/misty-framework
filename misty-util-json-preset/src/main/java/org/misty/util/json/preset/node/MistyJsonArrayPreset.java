@@ -1,6 +1,8 @@
-package org.misty.util.json.api;
+package org.misty.util.json.preset.node;
 
-public interface MistyJson {
+import org.misty.util.json.api.node.MistyJsonArray;
+
+public class MistyJsonArrayPreset extends MistyJsonAbstract implements MistyJsonArray {
 
 	/* [static] field */
 
@@ -13,12 +15,6 @@ public interface MistyJson {
 	/* [instance] constructor */
 
 	/* [instance] method */
-
-	public boolean isMistyObject();
-
-	public boolean isMistyArray();
-
-	public boolean isValue();
 
 	/* [instance] getter/setter */
 

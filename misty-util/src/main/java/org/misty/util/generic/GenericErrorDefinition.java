@@ -38,16 +38,16 @@ public interface GenericErrorDefinition<ThrowableType extends MistyException> {
 	}
 
 	public default String getErrorTypeCodeMsg() {
-		return getErrorTypeCode() + ":" + getErrorMsg();
+		return getErrorTypeCode() + "(" + getErrorMsg() + ")";
 	}
 
-	public ThrowableType pop();
+	public ThrowableType pop() throws ThrowableType;
 
-	public ThrowableType pop(String msg);
+	public ThrowableType pop(String msg) throws ThrowableType;
 
-	public ThrowableType pop(Throwable cause);
+	public ThrowableType pop(Throwable cause) throws ThrowableType;
 
-	public ThrowableType pop(String msg, Throwable cause);
+	public ThrowableType pop(String msg, Throwable cause) throws ThrowableType;
 
 	/* [instance] getter/setter */
 

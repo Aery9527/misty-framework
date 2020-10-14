@@ -1,0 +1,56 @@
+package org.misty.util.json.api.node;
+
+import java.util.Map;
+
+import org.misty.util.json.api.error.MistyJsonErrorCodes;
+import org.misty.util.json.api.error.MistyJsonException;
+
+public interface MistyJsonObject extends MistyJson, Map<String, MistyJson> {
+
+	/* [static] field */
+
+	/* [static] */
+
+	/* [static] method */
+
+	/* [instance] field */
+
+	/* [instance] constructor */
+
+	/* [instance] method */
+
+	@Override
+	public default boolean isJsonObject() {
+		return true;
+	}
+
+	@Override
+	public default boolean isJsonArray() {
+		return false;
+	}
+
+	@Override
+	public default boolean isJsonValue() {
+		return false;
+	}
+
+	@Override
+	public default MistyJsonObject toJsonObject() throws MistyJsonException {
+		return this;
+	}
+
+	@Override
+	public default MistyJsonArray toJsonArray() throws MistyJsonException {
+		throw MistyJsonErrorCodes.NODE_CAST_ERROR.pop();
+	}
+
+	@Override
+	public default MistyJsonValue toJsonValue() throws MistyJsonException {
+		throw MistyJsonErrorCodes.NODE_CAST_ERROR.pop();
+	}
+	
+	//
+
+	/* [instance] getter/setter */
+
+}
