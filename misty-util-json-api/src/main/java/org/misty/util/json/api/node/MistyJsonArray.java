@@ -20,13 +20,13 @@ public interface MistyJsonArray extends MistyJson, Collection<MistyJson> {
 	/* [instance] method */
 
 	@Override
-	public default boolean isJsonObject() {
-		return false;
+	public default boolean isJsonArray() {
+		return true;
 	}
 
 	@Override
-	public default boolean isJsonArray() {
-		return true;
+	public default boolean isJsonObject() {
+		return false;
 	}
 
 	@Override
@@ -35,20 +35,20 @@ public interface MistyJsonArray extends MistyJson, Collection<MistyJson> {
 	}
 
 	@Override
-	public default MistyJsonObject toJsonObject() throws MistyJsonException {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+	public default MistyJsonArray toJsonArray() throws MistyJsonException {
+		return this;
 	}
 
 	@Override
-	public default MistyJsonArray toJsonArray() throws MistyJsonException {
-		return this;
+	public default MistyJsonObject toJsonObject() throws MistyJsonException {
+		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
 	@Override
 	public default MistyJsonValue<?> toJsonValue() throws MistyJsonException {
 		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
-	
+
 	/* [instance] getter/setter */
 
 }

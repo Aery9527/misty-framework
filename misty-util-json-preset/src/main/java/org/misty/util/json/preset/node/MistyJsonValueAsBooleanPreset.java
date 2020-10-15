@@ -1,9 +1,9 @@
 package org.misty.util.json.preset.node;
 
 import org.misty.util.json.api.node.MistyJsonValue;
-import org.misty.util.json.api.node.MistyJsonValueAsString;
+import org.misty.util.json.api.node.MistyJsonValueAsBoolean;
 
-public class MistyJsonValueAsStringPreset extends MistyJsonValueAbstract<String> implements MistyJsonValueAsString {
+public class MistyJsonValueAsBooleanPreset extends MistyJsonValueAbstract<Boolean> implements MistyJsonValueAsBoolean {
 
 	/* [static] field */
 
@@ -15,17 +15,22 @@ public class MistyJsonValueAsStringPreset extends MistyJsonValueAbstract<String>
 
 	/* [instance] constructor */
 
-	public MistyJsonValueAsStringPreset(String value) {
-		setValue(value);
+	public MistyJsonValueAsBooleanPreset(boolean value) {
+		super.setValue(value);
 	}
 
 	/* [instance] method */
 
 	@Override
 	public Class<? extends MistyJsonValue<?>> provideMainJsonValueInterface() {
-		return MistyJsonValueAsString.class;
+		return MistyJsonValueAsBoolean.class;
 	}
 
 	/* [instance] getter/setter */
+
+	@Override
+	public void setValue(boolean value) {
+		super.setValue(value);
+	}
 
 }

@@ -18,12 +18,12 @@ public interface MistyJsonValue<ValueType> extends MistyJson {
 	/* [instance] method */
 
 	@Override
-	public default boolean isJsonObject() {
+	public default boolean isJsonArray() {
 		return false;
 	}
 
 	@Override
-	public default boolean isJsonArray() {
+	public default boolean isJsonObject() {
 		return false;
 	}
 
@@ -33,12 +33,12 @@ public interface MistyJsonValue<ValueType> extends MistyJson {
 	}
 
 	@Override
-	public default MistyJsonObject toJsonObject() throws MistyJsonException {
+	public default MistyJsonArray toJsonArray() throws MistyJsonException {
 		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
 	@Override
-	public default MistyJsonArray toJsonArray() throws MistyJsonException {
+	public default MistyJsonObject toJsonObject() throws MistyJsonException {
 		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
@@ -47,21 +47,27 @@ public interface MistyJsonValue<ValueType> extends MistyJson {
 		return this;
 	}
 
-	public boolean isNullValue();
+	//
 
-	public boolean isStringValue();
+	public boolean isBooleanValue();
+
+	public boolean isNullValue();
 
 	public boolean isNumberValue();
 
-	public MistyJsonValueAsNull toNullValue();
+	public boolean isStringValue();
 
-	public MistyJsonValueAsString toStringValue();
+	public MistyJsonValueAsBoolean toBooleanValue();
+
+	public MistyJsonValueAsNull toNullValue();
 
 	public MistyJsonValueAsNumber toNumberValue();
 
-	public ValueType getValue();
+	public MistyJsonValueAsString toStringValue();
 
-	public void setValue(ValueType value);
+	//
+
+	public ValueType getValue();
 
 	/* [instance] getter/setter */
 

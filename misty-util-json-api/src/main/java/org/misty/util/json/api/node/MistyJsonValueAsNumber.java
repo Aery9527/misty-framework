@@ -1,5 +1,7 @@
 package org.misty.util.json.api.node;
 
+import java.math.BigDecimal;
+
 import org.misty.util.json.api.error.MistyJsonErrors;
 
 public interface MistyJsonValueAsNumber extends MistyJsonValue<Number> {
@@ -17,12 +19,12 @@ public interface MistyJsonValueAsNumber extends MistyJsonValue<Number> {
 	/* [instance] method */
 
 	@Override
-	public default boolean isNullValue() {
+	public default boolean isBooleanValue() {
 		return false;
 	}
 
 	@Override
-	public default boolean isStringValue() {
+	public default boolean isNullValue() {
 		return false;
 	}
 
@@ -32,12 +34,17 @@ public interface MistyJsonValueAsNumber extends MistyJsonValue<Number> {
 	}
 
 	@Override
-	public default MistyJsonValueAsNull toNullValue() {
+	public default boolean isStringValue() {
+		return false;
+	}
+
+	@Override
+	public default MistyJsonValueAsBoolean toBooleanValue() {
 		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
 	@Override
-	public default MistyJsonValueAsString toStringValue() {
+	public default MistyJsonValueAsNull toNullValue() {
 		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
@@ -46,6 +53,21 @@ public interface MistyJsonValueAsNumber extends MistyJsonValue<Number> {
 		return this;
 	}
 
+	@Override
+	public default MistyJsonValueAsString toStringValue() {
+		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+	}
+
 	/* [instance] getter/setter */
+
+	public void setValue(int value);
+
+	public void setValue(long value);
+
+	public void setValue(float value);
+
+	public void setValue(double value);
+
+	public void setValue(BigDecimal value);
 
 }

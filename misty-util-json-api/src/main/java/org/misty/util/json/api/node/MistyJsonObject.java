@@ -20,13 +20,13 @@ public interface MistyJsonObject extends MistyJson, Map<String, MistyJson> {
 	/* [instance] method */
 
 	@Override
-	public default boolean isJsonObject() {
-		return true;
+	public default boolean isJsonArray() {
+		return false;
 	}
 
 	@Override
-	public default boolean isJsonArray() {
-		return false;
+	public default boolean isJsonObject() {
+		return true;
 	}
 
 	@Override
@@ -35,13 +35,13 @@ public interface MistyJsonObject extends MistyJson, Map<String, MistyJson> {
 	}
 
 	@Override
-	public default MistyJsonObject toJsonObject() throws MistyJsonException {
-		return this;
+	public default MistyJsonArray toJsonArray() throws MistyJsonException {
+		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
 	@Override
-	public default MistyJsonArray toJsonArray() throws MistyJsonException {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+	public default MistyJsonObject toJsonObject() throws MistyJsonException {
+		return this;
 	}
 
 	@Override

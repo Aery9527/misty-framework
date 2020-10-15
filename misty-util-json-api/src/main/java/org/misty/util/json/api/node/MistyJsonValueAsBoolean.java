@@ -2,7 +2,7 @@ package org.misty.util.json.api.node;
 
 import org.misty.util.json.api.error.MistyJsonErrors;
 
-public interface MistyJsonValueAsNull extends MistyJsonValue<Void> {
+public interface MistyJsonValueAsBoolean extends MistyJsonValue<Boolean> {
 
 	/* [static] field */
 
@@ -18,12 +18,12 @@ public interface MistyJsonValueAsNull extends MistyJsonValue<Void> {
 
 	@Override
 	public default boolean isBooleanValue() {
-		return false;
+		return true;
 	}
 
 	@Override
 	public default boolean isNullValue() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -38,12 +38,12 @@ public interface MistyJsonValueAsNull extends MistyJsonValue<Void> {
 
 	@Override
 	public default MistyJsonValueAsBoolean toBooleanValue() {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		return this;
 	}
 
 	@Override
 	public default MistyJsonValueAsNull toNullValue() {
-		return this;
+		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
 	}
 
 	@Override
@@ -57,5 +57,7 @@ public interface MistyJsonValueAsNull extends MistyJsonValue<Void> {
 	}
 
 	/* [instance] getter/setter */
+
+	public void setValue(boolean value);
 
 }

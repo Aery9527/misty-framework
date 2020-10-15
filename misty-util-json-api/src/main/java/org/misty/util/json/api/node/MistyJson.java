@@ -16,15 +16,15 @@ public interface MistyJson {
 
 	/* [instance] method */
 
-	public boolean isJsonObject();
-
 	public boolean isJsonArray();
+
+	public boolean isJsonObject();
 
 	public boolean isJsonValue();
 
-	public MistyJsonObject toJsonObject() throws MistyJsonException;
-
 	public MistyJsonArray toJsonArray() throws MistyJsonException;
+
+	public MistyJsonObject toJsonObject() throws MistyJsonException;
 
 	public MistyJsonValue<?> toJsonValue() throws MistyJsonException;
 
