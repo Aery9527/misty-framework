@@ -1,7 +1,5 @@
 package org.misty.util.json.api.maker.setting;
 
-import org.misty.util.generic.Examiner;
-
 public class MistyJsonMakerSetting {
 
 	/* [static] field */
@@ -12,21 +10,27 @@ public class MistyJsonMakerSetting {
 
 	/* [instance] field */
 
-	private MistyJsonAssembler jsonAssembler;
+	private String jsonAssemblerClass;
 
 	/* [instance] constructor */
 
 	/* [instance] method */
 
-	/* [instance] getter/setter */
+	public MistyJsonMakerSetting clone() {
+		MistyJsonMakerSetting setting = new MistyJsonMakerSetting();
+		setting.setJsonAssemblerClass(this.jsonAssemblerClass);
 
-	public MistyJsonAssembler getJsonAssembler() {
-		return jsonAssembler;
+		return setting;
 	}
 
-	public void setJsonAssembler(MistyJsonAssembler jsonAssembler) {
-		Examiner.refuseNullAndEmpty("jsonAssembler", jsonAssembler);
-		this.jsonAssembler = jsonAssembler;
+	/* [instance] getter/setter */
+
+	public String getJsonAssemblerClass() {
+		return jsonAssemblerClass;
+	}
+
+	public void setJsonAssemblerClass(String jsonAssemblerClass) {
+		this.jsonAssemblerClass = jsonAssemblerClass;
 	}
 
 }

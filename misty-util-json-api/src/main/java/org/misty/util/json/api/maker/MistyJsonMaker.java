@@ -34,6 +34,8 @@ public interface MistyJsonMaker {
 
 	public String toPrettyJsonString(MistyJson mistyJson);
 
+	public <Type> Type fromJsonString(String json, Class<Type> type);
+
 	// series of JsonArray
 
 	public MistyJsonArray makeArray();

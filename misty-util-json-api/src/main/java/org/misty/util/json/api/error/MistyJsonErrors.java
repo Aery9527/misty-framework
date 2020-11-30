@@ -4,9 +4,13 @@ import org.misty.util.generic.GenericErrorDefinition;
 
 public enum MistyJsonErrors implements GenericErrorDefinition<MistyJsonException> {
 	// 00 series is about check error
-	NODE_CAST_ERROR("0001") //
-	, SET_ERROR("0002") //
-	, UNHANDLED_JSON_TYPE("0003") //
+	SET_ERROR("00" + "01") //
+	, UNHANDLED_JSON_TYPE("00" + "02") //
+	, SETTING_REFRESH_ERROR("00" + "03") //
+	// 10 series is about cast error
+	, NODE_CAST_ERROR("10" + "01") //
+	// 99 series is about unknown error
+	, UNKNOWN_ERROR("99" + "00") //
 	;
 
 	/* [static] field */

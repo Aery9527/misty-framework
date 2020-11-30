@@ -4,8 +4,11 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
 
 import org.misty.util.generic.Examiner;
+import org.misty.util.json.api.error.MistyJsonErrors;
 import org.misty.util.json.api.maker.MistyJsonMaker;
 import org.misty.util.json.api.maker.setting.MistyJsonAssembler;
 import org.misty.util.json.api.maker.setting.MistyJsonMakerSetting;
@@ -35,27 +38,38 @@ public class MistyJsonMakerPreset implements MistyJsonMaker {
 
 	private MistyJsonMakerSetting setting;
 
+	private MistyJsonAssembler jsonAssembler;
+
 	/* [instance] constructor */
 
 	public MistyJsonMakerPreset() {
 		this.setting = new MistyJsonMakerSetting();
-		this.setting.setJsonAssembler(new MistyJsonAssemblerPreset());
+		this.setting.setJsonAssemblerClass("org.misty.util.json.preset.maker.MistyJsonAssemblerPreset");
+		refreshSetting(this.setting);
 	}
 
+	public MistyJsonMakerPreset(MistyJsonMakerSetting setting) {
+		this.setting = setting;
+		refreshSetting(this.setting);
+	}
 	/* [instance] method */
 
 	@Override
 	public String toJsonString(MistyJson mistyJson) {
-		MistyJsonAssembler jsonAssembler = this.setting.getJsonAssembler();
-		String json = jsonAssembler.toJson(mistyJson);
+		String json = this.jsonAssembler.toJson(mistyJson);
 		return json;
 	}
 
 	@Override
 	public String toPrettyJsonString(MistyJson mistyJson) {
-		MistyJsonAssembler jsonAssembler = this.setting.getJsonAssembler();
-		String prettyString = jsonAssembler.toPrettyString(mistyJson);
+		String prettyString = this.jsonAssembler.toPrettyString(mistyJson);
 		return prettyString;
+	}
+
+	@Override
+	public <Type> Type fromJsonString(String json, Class<Type> type) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	// series of JsonArray
@@ -149,17 +163,67 @@ public class MistyJsonMakerPreset implements MistyJsonMaker {
 		return new MistyJsonValueAsStringPreset(value);
 	}
 
+	//
+
+	public void refreshSetting(MistyJsonMakerSetting newSetting) {
+		try {
+			Examiner.refuseNullAndEmpty("newSetting", newSetting);
+
+			boolean refreshAll = newSetting == this.setting;
+
+			refresh(refreshAll, this.setting::getJsonAssemblerClass, newSetting::getJsonAssemblerClass,
+					(jsonAssemblerClass) -> {
+						this.jsonAssembler = refreshJsonAssembler(jsonAssemblerClass);
+					});
+
+		} catch (Exception e) {
+			throw MistyJsonErrors.UNKNOWN_ERROR.thrown(e);
+		}
+	}
+
+	public MistyJsonAssembler refreshJsonAssembler(String jsonAssemblerClass) {
+		
+	}
+
+	public <SettingValue> void refresh(boolean refreshAll, Supplier<SettingValue> oldSupplier,
+			Supplier<SettingValue> newSupplier, Consumer<SettingValue> action) {
+		SettingValue oldValue = oldSupplier.get();
+		SettingValue newValue = newSupplier.get();
+
+		if (oldValue == null) {
+			throw MistyJsonErrors.SETTING_REFRESH_ERROR
+					.thrown("old setting value can't be null, please check initial function.");
+		}
+
+		if (newValue == null && refreshAll) {
+			throw MistyJsonErrors.SETTING_REFRESH_ERROR
+					.thrown("new setting value can't be null, please check initial function.");
+		}
+
+		if (newValue != null) {
+			action.accept(newValue);
+		}
+	}
+
 	/* [instance] getter/setter */
 
 	@Override
 	public MistyJsonMakerSetting getSetting() {
-		return this.setting;
+		MistyJsonMakerSetting setting = this.setting.clone();
+		return setting;
 	}
 
 	@Override
 	public void setSetting(MistyJsonMakerSetting setting) {
-		Examiner.refuseNullAndEmpty("setting", setting);
-		this.setting = setting;
+		MistyJsonMakerSetting newSetting = setting.clone();
+
+		if (newSetting == setting) {
+			throw MistyJsonErrors.SETTING_REFRESH_ERROR.thrown(
+					MistyJsonMakerSetting.class.getSimpleName() + " cloned instance can't same the original instance!");
+		}
+
+		refreshSetting(newSetting);
+		this.setting = newSetting;
 	}
 
 }
