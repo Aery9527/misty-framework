@@ -41,13 +41,13 @@ public interface GenericErrorDefinition<ThrowableType extends MistyException> {
 		return getErrorTypeCode() + "(" + getErrorMsg() + ")";
 	}
 
-	public ThrowableType pop() throws ThrowableType;
+	public ThrowableType thrown() throws ThrowableType;
 
-	public ThrowableType pop(String msg) throws ThrowableType;
+	public ThrowableType thrown(String msg) throws ThrowableType;
 
-	public ThrowableType pop(Throwable cause) throws ThrowableType;
+	public ThrowableType thrown(Throwable cause) throws ThrowableType;
 
-	public ThrowableType pop(String msg, Throwable cause) throws ThrowableType;
+	public ThrowableType thrown(String msg, Throwable cause) throws ThrowableType;
 
 	/* [instance] getter/setter */
 

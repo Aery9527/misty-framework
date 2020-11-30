@@ -1,10 +1,14 @@
 package org.misty.util.json.api.maker;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.Map;
 
+import org.misty.util.json.api.maker.setting.MistyJsonMakerSetting;
+import org.misty.util.json.api.node.MistyJson;
 import org.misty.util.json.api.node.MistyJsonArray;
 import org.misty.util.json.api.node.MistyJsonObject;
 import org.misty.util.json.api.node.MistyJsonValueAsBoolean;
@@ -26,6 +30,10 @@ public interface MistyJsonMaker {
 
 	/* [instance] method */
 
+	public String toJsonString(MistyJson mistyJson);
+
+	public String toPrettyJsonString(MistyJson mistyJson);
+
 	// series of JsonArray
 
 	public MistyJsonArray makeArray();
@@ -33,6 +41,18 @@ public interface MistyJsonMaker {
 	public MistyJsonArray makeArray(Collection<?> collection);
 
 	public MistyJsonArray makeArray(Object... collection);
+
+	public default MistyJsonArray makeArrayWithLinkedList() {
+		return makeArray(new LinkedList<>());
+	}
+
+	public default MistyJsonArray makeArrayWithArrayList() {
+		return makeArrayWithArrayList(8);
+	}
+
+	public default MistyJsonArray makeArrayWithArrayList(int size) {
+		return makeArray(new ArrayList<>(size));
+	}
 
 	// series of JsonObject
 
@@ -67,5 +87,9 @@ public interface MistyJsonMaker {
 	public MistyJsonValueAsString makeString(String value);
 
 	/* [instance] getter/setter */
+
+	public MistyJsonMakerSetting getSetting();
+
+	public void setSetting(MistyJsonMakerSetting setting);
 
 }

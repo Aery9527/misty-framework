@@ -34,12 +34,12 @@ public interface MistyJsonValue<ValueType> extends MistyJson {
 
 	@Override
 	public default MistyJsonArray toJsonArray() throws MistyJsonException {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override
 	public default MistyJsonObject toJsonObject() throws MistyJsonException {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override

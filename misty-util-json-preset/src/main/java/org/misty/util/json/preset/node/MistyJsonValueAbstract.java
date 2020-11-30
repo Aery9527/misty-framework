@@ -20,15 +20,16 @@ public abstract class MistyJsonValueAbstract<ValueType> extends MistyJsonAbstrac
 	/* [instance] method */
 
 	@Override
-	public String toPrettyString() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getString() {
+		return this.value.toString();
 	}
+
+	//
 
 	public void check(ValueType value) {
 		if (value == null) {
 			throw MistyJsonErrors.SET_ERROR
-					.pop("can't set null into " + provideMainJsonValueInterface().getSimpleName());
+					.thrown("can't set null into " + provideMainJsonValueInterface().getSimpleName());
 		}
 	}
 

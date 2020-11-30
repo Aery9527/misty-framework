@@ -28,12 +28,6 @@ public interface MistyJson {
 
 	public MistyJsonValue<?> toJsonValue() throws MistyJsonException;
 
-	//
-
-	public String toString();
-
-	public String toPrettyString();
-
 	/* [instance] getter/setter */
 
 }

@@ -22,17 +22,28 @@ public class MistyJsonObjectPreset extends MistyJsonAbstract implements MistyJso
 
 	private final Map<String, MistyJson> map;
 
+	private final boolean sequenceable;
+
 	/* [instance] constructor */
 
 	public MistyJsonObjectPreset() {
 		this.map = new LinkedHashMap<>();
+		this.sequenceable = false;
 	}
 
 	public MistyJsonObjectPreset(Comparator<String> comparator) {
 		this.map = new TreeMap<>(comparator);
+		this.sequenceable = true;
 	}
 
 	/* [instance] method */
+
+	@Override
+	public String getString() {
+		return this.map.toString();
+	}
+
+	//
 
 	@Override
 	public int size() {
@@ -92,6 +103,11 @@ public class MistyJsonObjectPreset extends MistyJsonAbstract implements MistyJso
 	@Override
 	public Set<Entry<String, MistyJson>> entrySet() {
 		return this.map.entrySet();
+	}
+
+	@Override
+	public boolean isSequenceable() {
+		return this.sequenceable;
 	}
 
 	/* [instance] getter/setter */

@@ -1,5 +1,6 @@
 
 apply from: '../global-function.gradle'
+apply from: '../global-test.gradle'
 
 dependencies {
 	implementation project(':misty-util-json-api')

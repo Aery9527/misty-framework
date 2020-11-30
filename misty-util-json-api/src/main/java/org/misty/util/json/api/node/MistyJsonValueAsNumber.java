@@ -40,12 +40,12 @@ public interface MistyJsonValueAsNumber extends MistyJsonValue<Number> {
 
 	@Override
 	public default MistyJsonValueAsBoolean toBooleanValue() {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override
 	public default MistyJsonValueAsNull toNullValue() {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override
@@ -55,7 +55,7 @@ public interface MistyJsonValueAsNumber extends MistyJsonValue<Number> {
 
 	@Override
 	public default MistyJsonValueAsString toStringValue() {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	/* [instance] getter/setter */

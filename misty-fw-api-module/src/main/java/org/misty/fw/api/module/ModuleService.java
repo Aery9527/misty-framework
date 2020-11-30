@@ -13,8 +13,6 @@ public interface ModuleService {
 	/* [instance] constructor */
 
 	/* [instance] method */
-	
-	public serve();
 
 	/* [instance] getter/setter */
 

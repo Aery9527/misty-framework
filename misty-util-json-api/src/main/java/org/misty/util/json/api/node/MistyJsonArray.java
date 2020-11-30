@@ -41,12 +41,12 @@ public interface MistyJsonArray extends MistyJson, Collection<MistyJson> {
 
 	@Override
 	public default MistyJsonObject toJsonObject() throws MistyJsonException {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override
 	public default MistyJsonValue<?> toJsonValue() throws MistyJsonException {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	/* [instance] getter/setter */

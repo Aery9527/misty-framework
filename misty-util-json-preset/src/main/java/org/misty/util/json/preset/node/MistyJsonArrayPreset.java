@@ -26,10 +26,17 @@ public class MistyJsonArrayPreset extends MistyJsonAbstract implements MistyJson
 	}
 
 	public MistyJsonArrayPreset(Collection<MistyJson> collection) {
-		this.collection = new LinkedList<>(collection);
+		this.collection = collection;
 	}
 
 	/* [instance] method */
+
+	@Override
+	public String getString() {
+		return this.collection.toString();
+	}
+
+	//
 
 	@Override
 	public int size() {

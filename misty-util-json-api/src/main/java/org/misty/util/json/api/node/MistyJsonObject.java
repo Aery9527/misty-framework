@@ -36,7 +36,7 @@ public interface MistyJsonObject extends MistyJson, Map<String, MistyJson> {
 
 	@Override
 	public default MistyJsonArray toJsonArray() throws MistyJsonException {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override
@@ -46,9 +46,11 @@ public interface MistyJsonObject extends MistyJson, Map<String, MistyJson> {
 
 	@Override
 	public default MistyJsonValue<?> toJsonValue() throws MistyJsonException {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
+	public boolean isSequenceable();
+	
 	/* [instance] getter/setter */
 
 }

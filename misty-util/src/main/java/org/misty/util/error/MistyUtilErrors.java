@@ -37,22 +37,22 @@ public enum MistyUtilErrors implements GenericErrorDefinition<MistyException> {
 	/* [instance] method */
 
 	@Override
-	public MistyException pop() throws MistyException {
+	public MistyException thrown() throws MistyException {
 		throw new MistyException(this);
 	}
 
 	@Override
-	public MistyException pop(String msg) throws MistyException {
+	public MistyException thrown(String msg) throws MistyException {
 		throw new MistyException(this, msg);
 	}
 
 	@Override
-	public MistyException pop(Throwable cause) throws MistyException {
+	public MistyException thrown(Throwable cause) throws MistyException {
 		throw new MistyException(this, cause);
 	}
 
 	@Override
-	public MistyException pop(String msg, Throwable cause) throws MistyException {
+	public MistyException thrown(String msg, Throwable cause) throws MistyException {
 		throw new MistyException(this, msg, cause);
 	}
 

@@ -5,7 +5,11 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
 
+import org.misty.util.generic.Examiner;
 import org.misty.util.json.api.maker.MistyJsonMaker;
+import org.misty.util.json.api.maker.setting.MistyJsonAssembler;
+import org.misty.util.json.api.maker.setting.MistyJsonMakerSetting;
+import org.misty.util.json.api.node.MistyJson;
 import org.misty.util.json.api.node.MistyJsonArray;
 import org.misty.util.json.api.node.MistyJsonObject;
 import org.misty.util.json.api.node.MistyJsonValueAsBoolean;
@@ -29,9 +33,30 @@ public class MistyJsonMakerPreset implements MistyJsonMaker {
 
 	/* [instance] field */
 
+	private MistyJsonMakerSetting setting;
+
 	/* [instance] constructor */
 
+	public MistyJsonMakerPreset() {
+		this.setting = new MistyJsonMakerSetting();
+		this.setting.setJsonAssembler(new MistyJsonAssemblerPreset());
+	}
+
 	/* [instance] method */
+
+	@Override
+	public String toJsonString(MistyJson mistyJson) {
+		MistyJsonAssembler jsonAssembler = this.setting.getJsonAssembler();
+		String json = jsonAssembler.toJson(mistyJson);
+		return json;
+	}
+
+	@Override
+	public String toPrettyJsonString(MistyJson mistyJson) {
+		MistyJsonAssembler jsonAssembler = this.setting.getJsonAssembler();
+		String prettyString = jsonAssembler.toPrettyString(mistyJson);
+		return prettyString;
+	}
 
 	// series of JsonArray
 
@@ -125,5 +150,16 @@ public class MistyJsonMakerPreset implements MistyJsonMaker {
 	}
 
 	/* [instance] getter/setter */
+
+	@Override
+	public MistyJsonMakerSetting getSetting() {
+		return this.setting;
+	}
+
+	@Override
+	public void setSetting(MistyJsonMakerSetting setting) {
+		Examiner.refuseNullAndEmpty("setting", setting);
+		this.setting = setting;
+	}
 
 }

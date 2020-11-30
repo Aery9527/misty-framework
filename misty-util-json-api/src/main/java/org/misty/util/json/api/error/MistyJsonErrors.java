@@ -6,6 +6,7 @@ public enum MistyJsonErrors implements GenericErrorDefinition<MistyJsonException
 	// 00 series is about check error
 	NODE_CAST_ERROR("0001") //
 	, SET_ERROR("0002") //
+	, UNHANDLED_JSON_TYPE("0003") //
 	;
 
 	/* [static] field */
@@ -39,22 +40,22 @@ public enum MistyJsonErrors implements GenericErrorDefinition<MistyJsonException
 	/* [instance] method */
 
 	@Override
-	public MistyJsonException pop() throws MistyJsonException {
+	public MistyJsonException thrown() throws MistyJsonException {
 		throw new MistyJsonException(this);
 	}
 
 	@Override
-	public MistyJsonException pop(String msg) throws MistyJsonException {
+	public MistyJsonException thrown(String msg) throws MistyJsonException {
 		throw new MistyJsonException(this, msg);
 	}
 
 	@Override
-	public MistyJsonException pop(Throwable cause) throws MistyJsonException {
+	public MistyJsonException thrown(Throwable cause) throws MistyJsonException {
 		throw new MistyJsonException(this, cause);
 	}
 
 	@Override
-	public MistyJsonException pop(String msg, Throwable cause) throws MistyJsonException {
+	public MistyJsonException thrown(String msg, Throwable cause) throws MistyJsonException {
 		throw new MistyJsonException(this, msg, cause);
 	}
 

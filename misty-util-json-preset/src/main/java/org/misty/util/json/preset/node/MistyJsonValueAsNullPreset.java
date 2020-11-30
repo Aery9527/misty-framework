@@ -1,5 +1,6 @@
 package org.misty.util.json.preset.node;
 
+import org.misty.util.json.api.error.MistyJsonErrors;
 import org.misty.util.json.api.node.MistyJsonValue;
 import org.misty.util.json.api.node.MistyJsonValueAsNull;
 
@@ -25,6 +26,12 @@ public class MistyJsonValueAsNullPreset extends MistyJsonValueAbstract<Void> imp
 	@Override
 	public Class<? extends MistyJsonValue<?>> provideMainJsonValueInterface() {
 		return MistyJsonValueAsNull.class;
+	}
+
+	@Override
+	public void setValue(Void value) {
+		throw MistyJsonErrors.SET_ERROR
+				.thrown("can't set value into " + provideMainJsonValueInterface().getSimpleName());
 	}
 
 	/* [instance] getter/setter */

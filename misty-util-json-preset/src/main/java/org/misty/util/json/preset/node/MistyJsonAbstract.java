@@ -18,15 +18,10 @@ public abstract class MistyJsonAbstract implements MistyJson {
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		return super.toString();
+		return getString();
 	}
 
-	@Override
-	public String toPrettyString() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public abstract String getString();
 
 	/* [instance] getter/setter */
 

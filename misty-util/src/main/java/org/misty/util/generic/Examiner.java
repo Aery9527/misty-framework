@@ -25,9 +25,9 @@ public interface Examiner<ArgType> {
 			return "check error of  \"" + term + "\" that refuse null and empty.";
 		};
 	}
-	
+
 	public static class ofEmail {
-		
+
 	}
 
 	/* [static] method */
@@ -35,7 +35,7 @@ public interface Examiner<ArgType> {
 	public static <ArgType> void check(Examiner<ArgType> examiner, ArgType arg, String term) {
 		if (!examiner.check(arg)) {
 			String description = Message.CHECK_ERROR.apply(term, arg);
-			throw MistyUtilErrors.ARGUMENT_CHECK_ERROR.pop(description);
+			throw MistyUtilErrors.ARGUMENT_CHECK_ERROR.thrown(description);
 		}
 	}
 
@@ -46,7 +46,7 @@ public interface Examiner<ArgType> {
 		}
 
 		String description = Message.REQUIRE_NULL_OR_EMPTY.apply(term);
-		throw MistyUtilErrors.ARGUMENT_CHECK_ERROR.pop(description);
+		throw MistyUtilErrors.ARGUMENT_CHECK_ERROR.thrown(description);
 	}
 
 	public static <ArgType> ArgType refuseNullAndEmpty(String term, ArgType arg) {
@@ -55,7 +55,7 @@ public interface Examiner<ArgType> {
 		}
 
 		String description = Message.REFUSE_NULL_OR_EMPTY.apply(term);
-		throw MistyUtilErrors.ARGUMENT_CHECK_ERROR.pop(description);
+		throw MistyUtilErrors.ARGUMENT_CHECK_ERROR.thrown(description);
 	}
 
 	/* [instance] field */

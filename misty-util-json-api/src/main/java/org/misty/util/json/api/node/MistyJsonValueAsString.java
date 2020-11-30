@@ -38,17 +38,17 @@ public interface MistyJsonValueAsString extends MistyJsonValue<String> {
 
 	@Override
 	public default MistyJsonValueAsBoolean toBooleanValue() {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override
 	public default MistyJsonValueAsNull toNullValue() {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override
 	public default MistyJsonValueAsNumber toNumberValue() {
-		throw MistyJsonErrors.NODE_CAST_ERROR.pop();
+		throw MistyJsonErrors.NODE_CAST_ERROR.thrown();
 	}
 
 	@Override
