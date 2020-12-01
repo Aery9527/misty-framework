@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Map;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import org.misty.util.fi.MistyConsumer;
 import org.misty.util.generic.Examiner;
 import org.misty.util.json.api.error.MistyJsonErrors;
 import org.misty.util.json.api.maker.MistyJsonMaker;
@@ -182,11 +182,12 @@ public class MistyJsonMakerPreset implements MistyJsonMaker {
 	}
 
 	public MistyJsonAssembler refreshJsonAssembler(String jsonAssemblerClass) {
+		ClassLoader classloader = MistyJsonMakerPreset.class.getClassLoader();
 		
 	}
 
 	public <SettingValue> void refresh(boolean refreshAll, Supplier<SettingValue> oldSupplier,
-			Supplier<SettingValue> newSupplier, Consumer<SettingValue> action) {
+			Supplier<SettingValue> newSupplier, MistyConsumer<SettingValue> action) {
 		SettingValue oldValue = oldSupplier.get();
 		SettingValue newValue = newSupplier.get();
 
@@ -201,7 +202,7 @@ public class MistyJsonMakerPreset implements MistyJsonMaker {
 		}
 
 		if (newValue != null) {
-			action.accept(newValue);
+			action.acceptOrHandle(newValue);
 		}
 	}
 
